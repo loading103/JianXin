@@ -85,4 +85,6 @@ dependencies {
     //特色弹窗
     api 'com.afollestad.material-dialogs:core:3.3.0'
     api 'com.afollestad.material-dialogs:bottomsheets:3.3.0'
+    //lottie
+    api 'com.airbnb.android:lottie:3.3.1'
 }
