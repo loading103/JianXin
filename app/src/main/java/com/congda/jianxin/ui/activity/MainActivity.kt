@@ -10,10 +10,7 @@ import com.congda.baselibrary.base.BaseActivity
 import com.congda.baselibrary.utils.IMStatusBarUtil
 import com.congda.jianxin.R
 import com.congda.jianxin.adapter.MyViewPagerAdapter
-import com.congda.jianxin.ui.fragment.mvp.ui.FirstFragment
-import com.congda.jianxin.ui.fragment.mvp.ui.FourthFragment
-import com.congda.jianxin.ui.fragment.mvp.ui.ListFirstFragment
-import com.congda.jianxin.ui.fragment.mvp.ui.ThirdeFragment
+import com.congda.jianxin.ui.fragment.mvp.ui.*
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClickListener {
@@ -42,7 +39,7 @@ class MainActivity : BaseActivity(), ViewPager.OnPageChangeListener, View.OnClic
         viewpage.isCanScrollble = true
         viewpage.offscreenPageLimit = 3
         mFragments.add(FirstFragment())
-        mFragments.add(ListFirstFragment())
+        mFragments.add(SecondFragment())
         mFragments.add(ThirdeFragment())
         mFragments.add(FourthFragment())
         mAdapter = MyViewPagerAdapter(getSupportFragmentManager(), mFragments)

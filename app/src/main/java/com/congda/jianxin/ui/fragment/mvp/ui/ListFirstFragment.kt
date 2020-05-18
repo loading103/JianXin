@@ -59,7 +59,6 @@ class ListFirstFragment : BaseMvpFragment<ListFirstPresenter>(),ListFirstContrac
     }
 
     override fun initData() {
-        common_top.setTopTitle("首页")
         mPresenter.getBannerData()
         mPresenter.getListData()
     }

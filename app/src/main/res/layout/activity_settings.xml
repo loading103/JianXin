@@ -47,6 +47,7 @@
             android:layout_height="52dp"
             app:is_Check="false"
             app:left_img="@mipmap/set_ver"
+             app:is_show_line="false"
             app:text_content="震动提醒" />
 
          <com.congda.baselibrary.widget.ComLinearView
