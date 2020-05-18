@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    package="com.congda.tianjianxin">
+    package="com.congda.jianxin">
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
@@ -14,7 +14,7 @@
         android:allowBackup="true"
         android:label="@string/app_name"
         android:icon="@mipmap/app_logo"
-        android:name=".app.MyApplication"
+        android:name="com.congda.jianxin.app.MyApplication"
         android:networkSecurityConfig="@xml/network_security_config"
         tools:replace="android:networkSecurityConfig"
         android:requestLegacyExternalStorage="true"
@@ -29,7 +29,7 @@
             android:name="design_height_in_dp"
             android:value="640" /> <!-- arms配置 -->
 
-        <activity android:name=".ui.activity.mvp.ui.SplashActivity">
+        <activity android:name="com.congda.jianxin.ui.activity.mvp.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -37,27 +37,27 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ui.activity.GuideActivity"
+        <activity android:name="com.congda.jianxin.ui.activity.GuideActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.activity.MainActivity"
+        <activity android:name="com.congda.jianxin.ui.activity.MainActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.activity.ComWebActivity" />
+        <activity android:name="com.congda.jianxin.ui.activity.ComWebActivity" />
 
-        <activity android:name=".ui.activity.mvp.ui.ComWebViewActivity" />
+        <activity android:name="com.congda.jianxin.ui.activity.mvp.ui.ComWebViewActivity" />
 
-        <activity android:name=".ui.activity.mvp.ui.DemoActivity"
+        <activity android:name="com.congda.jianxin.ui.activity.mvp.ui.DemoActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity" />
 
-        <activity android:name=".ui.activity.RecycleDemoActivity"
+        <activity android:name="com.congda.jianxin.ui.activity.RecycleDemoActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
 
-        <activity android:name=".ui.activity.SettingActivity"
+        <activity android:name="com.congda.jianxin.ui.activity.SettingActivity"
             android:screenOrientation="portrait"
             tools:ignore="LockedOrientationActivity"/>
 
@@ -76,7 +76,7 @@
 
         <provider
             android:name="androidx.core.content.FileProvider"
-            android:authorities="com.congda.tianjianxin.fileprovider"
+            android:authorities="com.congda.jianxin.fileprovider"
             android:exported="false"
             android:grantUriPermissions="true">
             <meta-data

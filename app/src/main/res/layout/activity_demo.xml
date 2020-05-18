@@ -43,12 +43,6 @@
             <Button
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
-                android:text="Material弹窗"
-                android:textAllCaps="false"
-                android:id="@+id/btn13"/>
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
                 android:text="图片浏览"
                 android:id="@+id/btn5"/>
             <Button
