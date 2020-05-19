@@ -1,5 +1,6 @@
 package com.congda.baselibrary.widget.loading;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.Context;
@@ -43,33 +44,53 @@ public class DialogMessageTypeTwo extends AlertDialog {
 			}
 		}
 
-		public void  setProgress(final int  progress){
-			if (progress == -1){
-				mTitle.setVisibility(View.GONE);
-				return;
-			}
+	public void  setProgress(final int  progress,boolean isdown){
+		if (progress == -1){
+			mTitle.setVisibility(View.GONE);
+			return;
+		}
+		if(isdown){
+			mHandler.sendMessage(mHandler.obtainMessage(1,progress,0));
+		}else {
 			mHandler.sendMessage(mHandler.obtainMessage(0,progress,0));
 		}
-		private Handler mHandler = new Handler(){
-			@Override
-			public void handleMessage(Message msg) {
-				int what = msg.what;
-				if (what == 0) {    //update
-					int progress = msg.arg1;
-					if (progress >= 100){
-						mTitle.setText("上传成功，正在重新加载数据");
-						mHandler.postDelayed(new Runnable() {
-							@Override
-							public void run() {
-								dissmissDialog();
-							}
-						},1000);
-						return;
-					}
-					mTitle.setText("已上传:"+progress+"%");
+
+	}
+	private Handler mHandler = new Handler(){
+		@SuppressLint("HandlerLeak")
+		@Override
+		public void handleMessage(Message msg) {
+			int what = msg.what;
+			if (what == 0) {    //update
+				int progress = msg.arg1;
+				if (progress >= 100){
+					mTitle.setText("上传成功，正在重新加载数据");
+					mHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							dissmissDialog();
+						}
+					},1000);
+					return;
 				}
+				mTitle.setText("已上传:"+progress+"%");
 			}
-		};
+			if (what == 1) {
+				int progress = msg.arg1;
+				if (progress >= 100){
+					mTitle.setText("下载文件成功");
+					mHandler.postDelayed(new Runnable() {
+						@Override
+						public void run() {
+							dissmissDialog();
+						}
+					},1000);
+					return;
+				}
+				mTitle.setText("已下载:"+progress+"%");
+			}
+		}
+	};
 
 		private Dialog dialog;
 		TextView mTitle;
