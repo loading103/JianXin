@@ -16,6 +16,7 @@ import com.congda.baselibrary.utils.IMSavePhotoUtil
 import com.congda.baselibrary.utils.IMTimePickerUtils
 import com.congda.baselibrary.widget.dialog.IMIosCommonDiglog
 import com.congda.baselibrary.widget.dialog.IMSheetViewDialog
+import com.congda.baselibrary.widget.dialogfragment.LoginAgreeDialog
 import com.congda.jianxin.R
 import com.congda.jianxin.ui.activity.RecycleDemoActivity
 import com.congda.jianxin.ui.activity.mvp.contract.DemoContract
@@ -72,6 +73,7 @@ class DemoActivity : BaseMvpActivity<DemoPresenter>(), DemoContract.View, View.O
         btn10.setOnClickListener(this)
         btn11.setOnClickListener(this)
         btn12.setOnClickListener(this)
+        btn13.setOnClickListener(this)
     }
 
     override fun onClick(p0: View?) {
@@ -111,6 +113,9 @@ class DemoActivity : BaseMvpActivity<DemoPresenter>(), DemoContract.View, View.O
             }
             R.id.btn12->{
                 btn12OnClick()
+            }
+            R.id.btn13->{
+                btn13OnClick()
             }
             R.id.iv1 -> {
                 mPresenter.showSheetView(this)
@@ -183,6 +188,11 @@ class DemoActivity : BaseMvpActivity<DemoPresenter>(), DemoContract.View, View.O
             override fun onServiceDisconnected(name: ComponentName) {}
         }
         isBind = bindService(intent, mConn, Context.BIND_AUTO_CREATE)
+    }
+
+    private fun btn13OnClick() {
+        val loginDiglog = LoginAgreeDialog()
+        loginDiglog.show(supportFragmentManager, "LoginAgreeDialogFragment")
     }
     override fun onDestroy() {
         stopService()
