@@ -70,20 +70,6 @@ public class IMImageLoadUtil {
                 .into(imageView);
     }
     /**
-     * 加载圆形图片
-     */
-    public static void CommonImageCircleLoad(Context context, String url, ImageView imageView) {
-        RequestOptions requestOptions = RequestOptions.circleCropTransform();
-        Glide.with(context)
-                .load(url)
-                .placeholder(R.mipmap.im_icon_stub_loading)
-                .error(R.mipmap.im_icon_stub)
-                .diskCacheStrategy(DiskCacheStrategy.ALL)
-                .dontAnimate()
-                .apply(requestOptions)
-                .into(imageView);
-    }
-    /**
      * 加载圆形图片(带边框)
      */
     public static void CommonImageLineCircleLoad(Context context, String url, ImageView imageView) {

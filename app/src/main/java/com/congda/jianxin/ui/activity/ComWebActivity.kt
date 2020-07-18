@@ -49,17 +49,17 @@ class ComWebActivity : BaseActivity() {
 
 
     override fun onPause() {
-        mAgentWeb.getWebLifeCycle().onPause()
+        mAgentWeb.webLifeCycle.onPause()
         super.onPause()
     }
 
     override fun onResume() {
-        mAgentWeb.getWebLifeCycle().onResume()
+        mAgentWeb.webLifeCycle.onResume()
         super.onResume()
     }
 
     override fun onDestroy() {
-        mAgentWeb.getWebLifeCycle().onDestroy()
+        mAgentWeb.webLifeCycle.onDestroy()
         super.onDestroy()
     }
 
