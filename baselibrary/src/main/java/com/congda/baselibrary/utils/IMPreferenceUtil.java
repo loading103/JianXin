@@ -9,21 +9,21 @@ public class IMPreferenceUtil {
 	 * 保存Preference的name
 	 */
 	public static final String PREFERENCE_NAME = "saveInfo_user";
+	public static final String PREFERENCE_NAME_NODELETE = "saveInfo_user_noclean";
 
+	private static IMPreferenceUtil mPreferencemManager;
 
 	private static SharedPreferences mSharedPreferences;
-	private static IMPreferenceUtil mPreferencemManager;
 	private static SharedPreferences.Editor editor;
-	
-	private static String KEY_IS_FIRST = "KEY_IS_FIRST";
-	private static String KEY_IS_FIRST_ACTIVITY = "KEY_IS_FIRST_ACTIVITY";
-	private static String KEY_IS_FIRST_CONMUNICATE = "KEY_IS_FIRST_CONMUNICATE";
-	private static String KEY_IS_FIRST_ACTIVITYINFO = "KEY_IS_FIRST_ACTIVITYINFO";
 
+	private static SharedPreferences mSharedPreferences_noclean;
+	private static SharedPreferences.Editor editor_noclean;
 
 	private IMPreferenceUtil(Context cxt) {
 		mSharedPreferences = cxt.getSharedPreferences(PREFERENCE_NAME, Context.MODE_PRIVATE);
 		editor = mSharedPreferences.edit();
+		mSharedPreferences_noclean = cxt.getSharedPreferences(PREFERENCE_NAME_NODELETE, Context.MODE_PRIVATE);
+		editor_noclean = mSharedPreferences_noclean.edit();
 	}
 
 	public static synchronized void init(Context cxt){
@@ -59,14 +59,13 @@ public class IMPreferenceUtil {
 	public static float getPreference_Float(String key, Float aFloat) {
 		return mSharedPreferences.getFloat(key,aFloat);
 	}
-	
+
+
+
 	/**
 	 * @return
 	 */
 	public static String getPreference_String(String key, String value) {
-		if(mSharedPreferences==null){
-			return null;
-		}
 		return mSharedPreferences.getString(key,value);
 	}
 	/**
@@ -91,12 +90,43 @@ public class IMPreferenceUtil {
 		editor.apply();
 	}
 
-
 	/**
+	 * @return
 	 */
+	public static String getPreference_NocleanString(String key, String value) {
+		return mSharedPreferences_noclean.getString(key,value);
+	}
+	/**
+	 * @param
+	 */
+	public static void setPreference_NocleanString(String key, String value) {
+		editor_noclean.putString(key, value);
+		editor_noclean.apply();
+
+	}
+	/**
+	 * @return
+	 */
+	public static boolean getPreference_NocleanBoolean(String key, boolean value) {
+		return mSharedPreferences_noclean.getBoolean(key,value);
+	}
+	/**
+	 * @param
+	 */
+	public static void setPreference_NocleanBoolean(String key, boolean value) {
+		editor_noclean.putBoolean(key, value);
+		editor_noclean.apply();
+	}
+
 	public static void clean() {
 		editor.clear();
 		editor.apply();
 		editor.commit();
+	}
+
+	public static void noClean() {
+		editor_noclean.clear();
+		editor_noclean.apply();
+		editor_noclean.commit();
 	}
 }
